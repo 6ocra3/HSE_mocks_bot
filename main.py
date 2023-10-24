@@ -30,10 +30,10 @@ def handle_text_messages(message):
                                                "Бот умеет генерировать 9 типов данных для тестов:\n"
                                                "Name - русское имя\n"
                                                "Number - число в диапазоне [1, 100]\nCity - российский город\nDate - дата в диапазоне [1923, 2023]\n"
-                                               "Uuid - уникальный ID\nPassword - пароль \nEmail - электронная почта\nLogin - username пользователя\n PhoneNumber - номер телефона\n\n"
+                                               "Id - уникальный ID\nPassword - пароль \nEmail - электронная почта\nLogin - username пользователя\n PhoneNumber - номер телефона\n\n"
                                                "И возвращает массив коллекций созданных моков.\n\n Чтобы получить от БОТа нужные моки, пользователь должен запросить их указанным образом:\n"
                                                "Формат <имя поля>: <тип данных>\nимя: Name\nномер: Number\nгород: City\n"
-                                               "дата_рождения: Date\nID: Uuid\nпароль: Password\nэлектронная_почта: Email\n"
+                                               "дата_рождения: Date\nID: Id\nпароль: Password\nэлектронная_почта: Email\n"
                                                "логин: Login\nтелефон: PhoneNumber\n")
     else:
         bot.send_message(message.from_user.id, "Я тебя не понял", reply_markup=defKeyboard)
