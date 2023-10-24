@@ -39,6 +39,7 @@ def handle_text_messages(message):
         bot.send_message(message.from_user.id, "Я тебя не понял", reply_markup=defKeyboard)
 
 
+
 cnt = 0
 def get_field(message):
     try:
