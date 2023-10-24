@@ -1,5 +1,7 @@
 import random
 import json
+import datetime
+import uuid
 class Number:
     def __init__(self, field, min, max):
         self.field = field
@@ -16,8 +18,31 @@ class Name:
     def generate(self):
         return random.choice(self.data)
 
+class City:
+    def __init__(self,field):
+        self.field = field
+        self.data = ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 'Нижний Новгород', 'Казань', 'Челябинск', 'Омск', 'Самара', 'Ростов-на-Дону']
+    def generate(self):
+        return random.choice(self.data)
 
-mask = [Number("age", 5, 20), Name("name")]
+class Date_of_birth:
+    def __init__(self, field):
+        self.field = field
+    def generate(self):
+        end_date = datetime.now() - timedelta(days=365 * 100)
+        start_date = end_date - timedelta(days=365)
+        random_date = start_date + (end_date - start_date) * random.random()
+        return random_date.strftime("%d.%m.%Y")
+
+class Uuid:
+    def __init__(self):
+        self.field = field
+    def generate(self):
+        generated_uuid = uuid.uuid4()
+        shortened_uuid = str(generated_uuid)[:16]
+        return shortened_uuid
+
+mask = [Name("name"), Number("age", 5, 20), City("city"), Date_of_birth("date_of_birth"), Uuid("uuid")]
 itog = []
 for i in range(5):
     a = {}
