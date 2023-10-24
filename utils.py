@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import random
 import json
+import datetime
+import uuid
 class Number:
     def __init__(self, field, min, max):
         self.field = field
@@ -16,6 +18,30 @@ class Name:
         self.data = ['Александр', 'Алексей', 'Андрей', 'Анна', 'Артём', 'Дарья', 'Дмитрий', 'Евгения', 'Екатерина', 'Иван', 'Ксения', 'Мария', 'Максим', 'Наталья', 'Никита', 'Ольга', 'Павел', 'Светлана', 'Сергей', 'Татьяна', 'Юлия', 'Яна', 'Алина', 'Анатолий', 'Валерия', 'Виктор', 'Галина', 'Георгий', 'Елена', 'Илья', 'Кирилл', 'Лариса', 'Любовь', 'Михаил', 'Надежда', 'Олег', 'Полина', 'Роман', 'София', 'Станислав', 'Тимофей', 'Ульяна', 'Федор', 'Христина', 'Эдуард', 'Юрий', 'Ярослав']
     def generate(self):
         return random.choice(self.data)
+
+class City:
+    def __init__(self,field):
+        self.field = field
+        self.data = ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 'Нижний Новгород', 'Казань', 'Челябинск', 'Омск', 'Самара', 'Ростов-на-Дону']
+    def generate(self):
+        return random.choice(self.data)
+
+class Date_of_birth:
+    def __init__(self, field):
+        self.field = field
+    def generate(self):
+        end_date = datetime.now() - timedelta(days=365 * 100)
+        start_date = end_date - timedelta(days=365)
+        random_date = start_date + (end_date - start_date) * random.random()
+        return random_date.strftime("%d.%m.%Y")
+
+class Uuid:
+    def __init__(self):
+        self.field = field
+    def generate(self):
+        generated_uuid = uuid.uuid4()
+        shortened_uuid = str(generated_uuid)[:16]
+        return shortened_uuid
 
 class Password:
     def __init__(self,field):
@@ -56,8 +82,7 @@ class Login:
         if fl:
             login = random.choice(self.sbls) + login
         return login
-
-
+      
 class PhoneNumber:
     def __init__(self,field):
         self.field = field
@@ -69,9 +94,7 @@ class PhoneNumber:
         return pn
 
 
-
-
-mask = [Number("age", 5, 20), Name("name"), Email('email'), PhoneNumber('phone_number'), Login('login'), Password('password')]
+mask = [Number("age", 5, 20), Name("name"), City("city"), Date_of_birth("date_of_birth"), Uuid("uuid"), Email('email'), PhoneNumber('phone_number'), Login('login'), Password('password')]
 itog = []
 for i in range(5):
     a = {}
