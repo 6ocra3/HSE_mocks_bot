@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import random
 import json
-import datetime
+from datetime import datetime, timedelta
 import uuid
 class Number:
-    def __init__(self, field, min, max):
+    def __init__(self, field, min = 1, max = 100):
         self.field = field
         self.min = min
         self.max = max
@@ -26,7 +26,7 @@ class City:
     def generate(self):
         return random.choice(self.data)
 
-class Date_of_birth:
+class Date:
     def __init__(self, field):
         self.field = field
     def generate(self):
@@ -36,7 +36,7 @@ class Date_of_birth:
         return random_date.strftime("%d.%m.%Y")
 
 class Uuid:
-    def __init__(self):
+    def __init__(self, field):
         self.field = field
     def generate(self):
         generated_uuid = uuid.uuid4()
@@ -94,14 +94,14 @@ class PhoneNumber:
         return pn
 
 
-mask = [Number("age", 5, 20), Name("name"), City("city"), Date_of_birth("date_of_birth"), Uuid("uuid"), Email('email'), PhoneNumber('phone_number'), Login('login'), Password('password')]
-itog = []
-for i in range(5):
-    a = {}
-    for j in mask:
-        a[j.field] = j.generate()
-    itog.append(a)
-
-print(json.dumps(itog, ensure_ascii=False))
+# mask = [Number("age", 5, 20), Name("name"), City("city"), Date_of_birth("date_of_birth"), Uuid("uuid"), Email('email'), PhoneNumber('phone_number'), Login('login'), Password('password')]
+# itog = []
+# for i in range(5):
+#     a = {}
+#     for j in mask:
+#         a[j.field] = j.generate()
+#     itog.append(a)
+#
+# print(json.dumps(itog, ensure_ascii=False))
 
 #Name, Number, City, Date, Uuid, Email, PhoneNumber, Login, Password.
