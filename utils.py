@@ -27,4 +27,4 @@ for i in range(5):
 
 print(json.dumps(itog, ensure_ascii=False))
 
-#Name, City, Date, Number, Uuid, Email,PhoneNumber, Login, Password.
+#Name, Number, City, Date, Uuid, Email, PhoneNumber, Login, Password.
