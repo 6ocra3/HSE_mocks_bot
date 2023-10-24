@@ -30,9 +30,9 @@ class Date:
     def __init__(self, field):
         self.field = field
     def generate(self):
-        end_date = datetime.now() - timedelta(days=365 * 100)
-        start_date = end_date - timedelta(days=365)
-        random_date = start_date + (end_date - start_date) * random.random()
+        current_date = datetime.now()
+        random_days = random.randint(365, 365 * 100)
+        random_date = current_date - timedelta(days=random_days)
         return random_date.strftime("%d.%m.%Y")
 
 class Uuid:
